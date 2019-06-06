@@ -1,0 +1,817 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python内置函数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="英文文档format(value[, format_spec]) Convert a value to a “formatted” representation, as controlled by format_spec. The interpretation of format_spec will depend on the type of the value argument, however">
+<meta name="keywords" content="python内置函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python内置函数(23)——format">
+<meta property="og:url" content="http://www.laobi.space/2016/10/27/Python内置函数-23-——format/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="英文文档format(value[, format_spec]) Convert a value to a “formatted” representation, as controlled by format_spec. The interpretation of format_spec will depend on the type of the value argument, however">
+<meta property="og:updated_time" content="2019-05-23T21:53:46.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python内置函数(23)——format">
+<meta name="twitter:description" content="英文文档format(value[, format_spec]) Convert a value to a “formatted” representation, as controlled by format_spec. The interpretation of format_spec will depend on the type of the value argument, however">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2016/10/27/Python内置函数-23-——format/"/>
+
+
+
+
+
+  <title>Python内置函数(23)——format | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2016/10/27/Python内置函数-23-——format/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python内置函数(23)——format</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-27T20:01:50+08:00">
+                2016-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python内置函数详解/" itemprop="url" rel="index">
+                    <span itemprop="name">python内置函数详解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="英文文档"><a href="#英文文档" class="headerlink" title="英文文档"></a>英文文档</h3><p>format(value[, format_spec])</p>
+<p>Convert a value to a “formatted” representation, as controlled by format_spec. The interpretation of format_spec will depend on the type of the value argument, however there is a standard formatting syntax that is used by most built-in types: Format Specification Mini-Language.</p>
+<p>The default format_spec is an empty string which usually gives the same effect as calling str(value).</p>
+<p>A call to format(value, format_spec) is translated to type(value).<strong>format</strong>(value, format_spec) which bypasses the instance dictionary when searching for the value’s <strong>format</strong>() method. A TypeError exception is raised if the method search reaches object and the format_spec is non-empty, or if either the format_spec or the return value are not strings.</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><blockquote>
+<p>函数功能将一个数值进行格式化显示。</p>
+</blockquote>
+<h4 id="如果参数format-spec未提供，则和调用str-value-效果相同，转换成字符串格式化。"><a href="#如果参数format-spec未提供，则和调用str-value-效果相同，转换成字符串格式化。" class="headerlink" title="如果参数format_spec未提供，则和调用str(value)效果相同，转换成字符串格式化。"></a>如果参数format_spec未提供，则和调用str(value)效果相同，转换成字符串格式化。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.1415936</span>)</div><div class="line"><span class="string">'3.1415936'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>str(<span class="number">3.1415926</span>)</div><div class="line"><span class="string">'3.1415926'</span></div></pre></td></tr></table></figure>
+<h4 id="对于不同的类型，参数format-spec可提供的值都不一样。"><a href="#对于不同的类型，参数format-spec可提供的值都不一样。" class="headerlink" title="对于不同的类型，参数format_spec可提供的值都不一样。"></a>对于不同的类型，参数format_spec可提供的值都不一样。</h4><pre><code class="python"><span class="comment">#字符串可以提供的参数 's' None</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="string">'some string'</span>,<span class="string">'s'</span>)
+<span class="string">'some string'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="string">'some string'</span>)
+<span class="string">'some string'</span>
+
+<span class="comment">#整形数值可以提供的参数有 'b' 'c' 'd' 'o' 'x' 'X' 'n' None</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3</span>,<span class="string">'b'</span>) <span class="comment">#转换成二进制</span>
+<span class="string">'11'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">97</span>,<span class="string">'c'</span>) <span class="comment">#转换unicode成字符</span>
+<span class="string">'a'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>,<span class="string">'d'</span>) <span class="comment">#转换成10进制</span>
+<span class="string">'11'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>,<span class="string">'o'</span>) <span class="comment">#转换成8进制</span>
+<span class="string">'13'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>,<span class="string">'x'</span>) <span class="comment">#转换成16进制 小写字母表示</span>
+<span class="string">'b'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>,<span class="string">'X'</span>) <span class="comment">#转换成16进制 大写字母表示</span>
+<span class="string">'B'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>,<span class="string">'n'</span>) <span class="comment">#和d一样</span>
+<span class="string">'11'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">11</span>) <span class="comment">#默认和d一样</span>
+<span class="string">'11'</span>
+
+<span class="comment">#浮点数可以提供的参数有 'e' 'E' 'f' 'F' 'g' 'G' 'n' '%' None</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">314159267</span>,<span class="string">'e'</span>) <span class="comment">#科学计数法，默认保留6位小数</span>
+<span class="string">'3.141593e+08'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">314159267</span>,<span class="string">'0.2e'</span>) <span class="comment">#科学计数法，指定保留2位小数</span>
+<span class="string">'3.14e+08'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">314159267</span>,<span class="string">'0.2E'</span>) <span class="comment">#科学计数法，指定保留2位小数，采用大写E表示</span>
+<span class="string">'3.14E+08'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">314159267</span>,<span class="string">'f'</span>) <span class="comment">#小数点计数法，默认保留6位小数</span>
+<span class="string">'314159267.000000'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.14159267000</span>,<span class="string">'f'</span>) <span class="comment">#小数点计数法，默认保留6位小数</span>
+<span class="string">'3.141593'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.14159267000</span>,<span class="string">'0.8f'</span>) <span class="comment">#小数点计数法，指定保留8位小数</span>
+<span class="string">'3.14159267'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.14159267000</span>,<span class="string">'0.10f'</span>) <span class="comment">#小数点计数法，指定保留10位小数</span>
+<span class="string">'3.1415926700'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.14e+1000000</span>,<span class="string">'F'</span>)  <span class="comment">#小数点计数法，无穷大转换成大小字母</span>
+<span class="string">'INF'</span>
+
+<span class="comment">#g的格式化比较特殊，假设p为格式中指定的保留小数位数，先尝试采用科学计数法格式化，得到幂指数exp，如果-4&lt;=exp&lt;p，则采用小数计数法，并保留p-1-exp位小数，否则按小数计数法计数，并按p-1保留小数位数</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.1g'</span>) <span class="comment">#p=1,exp=-5 ==》 -4&lt;=exp&lt;p不成立，按科学计数法计数，保留0位小数点</span>
+<span class="string">'3e-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.2g'</span>) <span class="comment">#p=1,exp=-5 ==》 -4&lt;=exp&lt;p不成立，按科学计数法计数，保留1位小数点</span>
+<span class="string">'3.1e-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.3g'</span>) <span class="comment">#p=1,exp=-5 ==》 -4&lt;=exp&lt;p不成立，按科学计数法计数，保留2位小数点</span>
+<span class="string">'3.14e-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.3G'</span>) <span class="comment">#p=1,exp=-5 ==》 -4&lt;=exp&lt;p不成立，按科学计数法计数，保留0位小数点，E使用大写</span>
+<span class="string">'3.14E-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.1415926777</span>,<span class="string">'.1g'</span>) <span class="comment">#p=1,exp=0 ==》 -4&lt;=exp&lt;p成立，按小数计数法计数，保留0位小数点</span>
+<span class="string">'3'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.1415926777</span>,<span class="string">'.2g'</span>) <span class="comment">#p=1,exp=0 ==》 -4&lt;=exp&lt;p成立，按小数计数法计数，保留1位小数点</span>
+<span class="string">'3.1'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">3.1415926777</span>,<span class="string">'.3g'</span>) <span class="comment">#p=1,exp=0 ==》 -4&lt;=exp&lt;p成立，按小数计数法计数，保留2位小数点</span>
+<span class="string">'3.14'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.1n'</span>) <span class="comment">#和g相同</span>
+<span class="string">'3e-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>,<span class="string">'.3n'</span>) <span class="comment">#和g相同</span>
+<span class="string">'3.14e-05'</span>
+<span class="meta">&gt;&gt;&gt; </span>format(<span class="number">0.00003141566</span>) <span class="comment">#和g相同</span>
+<span class="string">'3.141566e-05'</span>
+</code></pre>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python内置函数/" rel="tag"># python内置函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/26/Python内置函数-22-——float/" rel="next" title="Python内置函数(22)——float">
+                <i class="fa fa-chevron-left"></i> Python内置函数(22)——float
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/28/Python内置函数-24-——frozenset/" rel="prev" title="Python内置函数(24)——frozenset">
+                Python内置函数(24)——frozenset <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#英文文档"><span class="nav-number">1.</span> <span class="nav-text">英文文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果参数format-spec未提供，则和调用str-value-效果相同，转换成字符串格式化。"><span class="nav-number">2.1.</span> <span class="nav-text">如果参数format_spec未提供，则和调用str(value)效果相同，转换成字符串格式化。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于不同的类型，参数format-spec可提供的值都不一样。"><span class="nav-number">2.2.</span> <span class="nav-text">对于不同的类型，参数format_spec可提供的值都不一样。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

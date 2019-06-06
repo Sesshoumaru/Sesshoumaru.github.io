@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python内置类型," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="python中bool运算符按优先级顺序分别有or、and、not, 其中or、and为短路运算符  not先对表达式进行真值测试后再取反not运算符值只有1个表达式，not先对表达式进行真值测试后再取反,返回的结果不是True就是False123456&amp;gt;&amp;gt;&amp;gt; expression1 = &apos;&apos;&amp;gt;&amp;gt;&amp;gt; expression2 = &apos;1&apos;&amp;gt;&amp;gt;&amp;gt;">
+<meta name="keywords" content="python内置类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python内置类型(2)——布尔运算">
+<meta property="og:url" content="http://www.laobi.space/2017/09/29/Python内置类型-2-——布尔运算/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="python中bool运算符按优先级顺序分别有or、and、not, 其中or、and为短路运算符  not先对表达式进行真值测试后再取反not运算符值只有1个表达式，not先对表达式进行真值测试后再取反,返回的结果不是True就是False123456&amp;gt;&amp;gt;&amp;gt; expression1 = &apos;&apos;&amp;gt;&amp;gt;&amp;gt; expression2 = &apos;1&apos;&amp;gt;&amp;gt;&amp;gt;">
+<meta property="og:updated_time" content="2019-05-23T21:53:46.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python内置类型(2)——布尔运算">
+<meta name="twitter:description" content="python中bool运算符按优先级顺序分别有or、and、not, 其中or、and为短路运算符  not先对表达式进行真值测试后再取反not运算符值只有1个表达式，not先对表达式进行真值测试后再取反,返回的结果不是True就是False123456&amp;gt;&amp;gt;&amp;gt; expression1 = &apos;&apos;&amp;gt;&amp;gt;&amp;gt; expression2 = &apos;1&apos;&amp;gt;&amp;gt;&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2017/09/29/Python内置类型-2-——布尔运算/"/>
+
+
+
+
+
+  <title>Python内置类型(2)——布尔运算 | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2017/09/29/Python内置类型-2-——布尔运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python内置类型(2)——布尔运算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T09:01:49+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python内置类型详解/" itemprop="url" rel="index">
+                    <span itemprop="name">python内置类型详解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>python中bool运算符按优先级顺序分别有<code>or</code>、<code>and</code>、<code>not</code>, 其中<code>or</code>、<code>and</code>为短路运算符</p>
+</blockquote>
+<h3 id="not先对表达式进行真值测试后再取反"><a href="#not先对表达式进行真值测试后再取反" class="headerlink" title="not先对表达式进行真值测试后再取反"></a><code>not</code>先对表达式进行真值测试后再取反</h3><p><code>not</code>运算符值只有1个表达式，<code>not</code>先对表达式进行真值测试后再取反,返回的结果不是<code>True</code>就是<code>False</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression1 = <span class="string">''</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression2 = <span class="string">'1'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">not</span> expression1</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">not</span> expression2</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="or、and运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果"><a href="#or、and运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果" class="headerlink" title="or、and运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果"></a><code>or</code>、<code>and</code>运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果</h3><p>在其它语言中，比如C#，bool运算的结果肯定也是bool值；但是python中不是这样的，它返回的是满足bool运算条件的其中一个表达式的值。</p>
+<ul>
+<li><code>x or y</code>：</li>
+</ul>
+<p>若 <code>x</code>为<code>True</code>,则结果为<code>x</code>;若<code>x</code>为<code>False</code>, 则结果为<code>y</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression1 = <span class="string">'1'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression2 = <span class="string">'2'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression1 <span class="keyword">or</span> expression2</div><div class="line"><span class="string">'1'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression2 <span class="keyword">or</span> expression1</div><div class="line"><span class="string">'2'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>x and y</code>：</li>
+</ul>
+<p>若 <code>x</code>为<code>False</code>,则结果为<code>x</code>;若<code>x</code>为<code>True</code>, 则结果为<code>y</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression1 = <span class="string">''</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression2 = &#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression1 <span class="keyword">and</span> expression2</div><div class="line"><span class="string">''</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>expression2 <span class="keyword">and</span> expression1</div><div class="line">&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="or、and运算符是短路运算符"><a href="#or、and运算符是短路运算符" class="headerlink" title="or、and运算符是短路运算符"></a><code>or</code>、<code>and</code>运算符是短路运算符</h3><p>短路运算符的意思是，运算符左右的表达式的只有在需要求值的时候才进行求值。比如说<code>x or y</code>，python从左到右进行求值，先对表达式<code>x</code>的进行真值测试，如果表达式<code>x</code>是真值，根据<code>or</code>运算符的特性，不管<code>y</code>表达式的bool结果是什么，运算符的结果都是表达式<code>x</code>，所以表达式<code>y</code>不会进行求值。这种行为被称之为<strong>短路特性</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#函数功能判断一个数字是否是偶数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_even</span><span class="params">(num)</span>:</span></div><div class="line">    print(<span class="string">'input num is :'</span>,num)</div><div class="line">    <span class="keyword">return</span> num % <span class="number">2</span> == <span class="number">0</span></div><div class="line"></div><div class="line"><span class="comment">#is_even(1)被短路，不会执行</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">2</span>) <span class="keyword">or</span> is_even(<span class="number">1</span>)</div><div class="line">input num <span class="keyword">is</span> : <span class="number">2</span></div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">1</span>) <span class="keyword">or</span> is_even(<span class="number">2</span>)</div><div class="line">input num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line">input num <span class="keyword">is</span> : <span class="number">2</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+<h3 id="or、and运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果"><a href="#or、and运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果" class="headerlink" title="or、and运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果"></a><code>or</code>、<code>and</code>运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果</h3><p>表达式<code>x or y and z</code>，会先对<code>x or y</code>进行求值，然后求值的结果再和<code>z</code>进行求值，求值过程中依然遵循短路原则。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#is_even(2)、is_even(4)均被短路</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">1</span>) <span class="keyword">and</span> is_even(<span class="number">2</span>) <span class="keyword">and</span> is_even(<span class="number">4</span>)</div><div class="line">this num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line"><span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># is_even(1)为False，is_even(3)被短路</span></div><div class="line"><span class="comment"># is_even(1) and is_even(3)为False，is_even(5)需要求值</span></div><div class="line"><span class="comment"># is_even(1) and is_even(3) or is_even(5)为False，is_even(7)被短路</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">1</span>) <span class="keyword">and</span> is_even(<span class="number">3</span>) <span class="keyword">or</span> is_even(<span class="number">5</span>) <span class="keyword">and</span> is_even(<span class="number">7</span>)</div><div class="line">this num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line">this num <span class="keyword">is</span> : <span class="number">5</span></div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+<h3 id="not运算符的优先级比or、and高，一起使用的时候，会先计算not，再计算or、and的值"><a href="#not运算符的优先级比or、and高，一起使用的时候，会先计算not，再计算or、and的值" class="headerlink" title="not运算符的优先级比or、and高，一起使用的时候，会先计算not，再计算or、and的值"></a><code>not</code>运算符的优先级比<code>or</code>、<code>and</code>高，一起使用的时候，会先计算<code>not</code>，再计算<code>or</code>、<code>and</code>的值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">1</span>) <span class="keyword">or</span> is_even(<span class="number">3</span>)</div><div class="line">this num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line">this num <span class="keyword">is</span> : <span class="number">3</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">not</span> is_even(<span class="number">1</span>) <span class="keyword">or</span> is_even(<span class="number">3</span>)</div><div class="line">this num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>is_even(<span class="number">1</span>) <span class="keyword">or</span> <span class="keyword">not</span> is_even(<span class="number">3</span>)</div><div class="line">this num <span class="keyword">is</span> : <span class="number">1</span></div><div class="line">this num <span class="keyword">is</span> : <span class="number">3</span></div><div class="line"><span class="keyword">True</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h3 id="not运算符的优先级比-、-低，not-a-b-会被解释为-not-a-b-，-但是a-not-b-会提示语法错误。"><a href="#not运算符的优先级比-、-低，not-a-b-会被解释为-not-a-b-，-但是a-not-b-会提示语法错误。" class="headerlink" title="not运算符的优先级比==、!=低，not a == b 会被解释为 not (a == b)， 但是a == not b 会提示语法错误。"></a><code>not</code>运算符的优先级比<code>==</code>、<code>!=</code>低，<code>not a == b</code> 会被解释为 <code>not (a == b)</code>， 但是<code>a == not b</code> 会提示语法错误。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">not</span> <span class="number">1</span> == <span class="number">1</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> == <span class="keyword">not</span> <span class="number">1</span></div><div class="line">SyntaxError: invalid syntax</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">not</span> <span class="number">1</span> != <span class="number">1</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> != <span class="keyword">not</span> <span class="number">1</span></div><div class="line">SyntaxError: invalid syntax</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python内置类型/" rel="tag"># python内置类型</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/25/Python内置类型-1-——真值测试/" rel="next" title="Python内置类型(1)——真值测试">
+                <i class="fa fa-chevron-left"></i> Python内置类型(1)——真值测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/Python内置类型-3-——比较/" rel="prev" title="Python内置类型(3)——比较">
+                Python内置类型(3)——比较 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#not先对表达式进行真值测试后再取反"><span class="nav-number">1.</span> <span class="nav-text">not先对表达式进行真值测试后再取反</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#or、and运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果"><span class="nav-number">2.</span> <span class="nav-text">or、and运算符返回的结果是操作符两边的表达式中的符合逻辑条件的其中一个表达式的结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#or、and运算符是短路运算符"><span class="nav-number">3.</span> <span class="nav-text">or、and运算符是短路运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#or、and运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果"><span class="nav-number">4.</span> <span class="nav-text">or、and运算符可以多个组合使用，使用的时候将以此从左到右进行短路求值，最后输入结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not运算符的优先级比or、and高，一起使用的时候，会先计算not，再计算or、and的值"><span class="nav-number">5.</span> <span class="nav-text">not运算符的优先级比or、and高，一起使用的时候，会先计算not，再计算or、and的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not运算符的优先级比-、-低，not-a-b-会被解释为-not-a-b-，-但是a-not-b-会提示语法错误。"><span class="nav-number">6.</span> <span class="nav-text">not运算符的优先级比==、!=低，not a == b 会被解释为 not (a == b)， 但是a == not b 会提示语法错误。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

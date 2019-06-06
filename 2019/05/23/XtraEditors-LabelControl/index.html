@@ -1,0 +1,819 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="devexpress,控件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="LabelControl是一个文本显示控件，相比winform原生的Label控件只能简单显示文本，LabelControl控件的显示能力有很大的提升  HTML格式文本支持LabelControl控件的Text属性，不单能够显示简单的纯文本，还能解析HTML格式文本，只需要将AllowHtmlString属性设置成True即可。 例如： 12labelControl1.AllowHtmlStr">
+<meta name="keywords" content="devexpress,控件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="devepress控件不完全指南——LabelControl">
+<meta property="og:url" content="http://www.laobi.space/2019/05/23/XtraEditors-LabelControl/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="LabelControl是一个文本显示控件，相比winform原生的Label控件只能简单显示文本，LabelControl控件的显示能力有很大的提升  HTML格式文本支持LabelControl控件的Text属性，不单能够显示简单的纯文本，还能解析HTML格式文本，只需要将AllowHtmlString属性设置成True即可。 例如： 12labelControl1.AllowHtmlStr">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-1.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-2.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-3.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-4.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-5.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-6.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-7.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-8.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-9.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-10.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-11.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-12.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-13.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-14.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-15.png">
+<meta property="og:image" content="http://image.5243.fun/devexpress/label-control-16.png">
+<meta property="og:updated_time" content="2019-06-06T14:28:59.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="devepress控件不完全指南——LabelControl">
+<meta name="twitter:description" content="LabelControl是一个文本显示控件，相比winform原生的Label控件只能简单显示文本，LabelControl控件的显示能力有很大的提升  HTML格式文本支持LabelControl控件的Text属性，不单能够显示简单的纯文本，还能解析HTML格式文本，只需要将AllowHtmlString属性设置成True即可。 例如： 12labelControl1.AllowHtmlStr">
+<meta name="twitter:image" content="http://image.5243.fun/devexpress/label-control-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2019/05/23/XtraEditors-LabelControl/"/>
+
+
+
+
+
+  <title>devepress控件不完全指南——LabelControl | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2019/05/23/XtraEditors-LabelControl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">devepress控件不完全指南——LabelControl</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T18:35:19+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/devexpress控件/" itemprop="url" rel="index">
+                    <span itemprop="name">devexpress控件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>LabelControl是一个文本显示控件，相比winform原生的Label控件只能简单显示文本，LabelControl控件的显示能力有很大的提升</p>
+</blockquote>
+<h2 id="HTML格式文本支持"><a href="#HTML格式文本支持" class="headerlink" title="HTML格式文本支持"></a>HTML格式文本支持</h2><p>LabelControl控件的Text属性，不单能够显示简单的纯文本，还能解析HTML格式文本，只需要将AllowHtmlString属性设置成True即可。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">labelControl1.AllowHtmlString = true;</div><div class="line">labelControl1.Text = &quot;&lt;b&gt;Click&lt;/b&gt; &lt;href=&apos;http://www.devexpress.com&apos;&gt;www.devexpress.com&lt;/href&gt;  to open our web site.&quot;;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><img src="http://image.5243.fun/devexpress/label-control-1.png" alt="AllowHtmlString"></p>
+<p>当在用户点击超链接时，将会触发hyperlinkclick事件发生，在它的事件处理函数中可以得到超链接的地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private void labelControl1_HyperlinkClick(object sender, HyperlinkClickEventArgs e)</div><div class="line">&#123;</div><div class="line">    XtraMessageBox.Show(e.Link);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://image.5243.fun/devexpress/label-control-2.png" alt="AllowHtmlString"></p>
+<h2 id="图片支持"><a href="#图片支持" class="headerlink" title="图片支持"></a>图片支持</h2><p>LabelControl控件支持显示图片，在Appearance下的Image属性，可以选择任意类型的图片文件，使得Label标签的展示能力变得更强。</p>
+<p>默认的图片将以背景的方式居中显示在文字的下方：</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-3.png" alt="ImageSupport"></p>
+<p>此时可以通过在Appearance下的ImageAlign属性控制背景图片的显示和对齐方式：</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-4.png" alt="ImageSupport"></p>
+<p>如果要将图片和文本相对(并排)显示，则需要将ImageAlienToText属性设置成除None之外的值。</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-5.png" alt="ImageSupport"></p>
+<p><img src="http://image.5243.fun/devexpress/label-control-6.png" alt="ImageSupport"></p>
+<h2 id="控件大小控制机制"><a href="#控件大小控制机制" class="headerlink" title="控件大小控制机制"></a>控件大小控制机制</h2><p>LabelControl控件的大小，默认是根据其Text属性的文本长度控制的，高度固定，长度自适应，甚至可以超出窗体的可见区域，此时无法调整其Size属性。</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-7.png" alt="Size"></p>
+<p>这其实是AutoSize属性控制的，AutoSize有4个选项，其控制逻辑分别如下：</p>
+<ol>
+<li><p>Horizontal：高度固定，长度按Text属性的文本长度自动调整，也是LabelControl控件默认的控制方式</p>
+</li>
+<li><p>Default：默认方式，同Horizontal</p>
+</li>
+<li><p>Vertical：高度不固定也不可以设置，长度可以设置，设置完长度后，Text文本如果需要多行显示完，则自动调整高度</p>
+</li>
+</ol>
+<p><img src="http://image.5243.fun/devexpress/label-control-8.png" alt="Size"></p>
+<ol>
+<li><p>None：不自动调整大小，即控件的大小可以设置，此时长度和高度都可以设置。</p>
+<ul>
+<li><p>Text文本如果比较长，超出控件范围部分不会显示。</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-9.png" alt="Size"></p>
+</li>
+<li><p>如果AutoEllipsis属性设置为True，控件最右边将显示成”…”，表示有内容被省略显示。</p>
+<p><img src="http://image.5243.fun/devexpress/label-control-10.png" alt="Size"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="空白区域线条显示"><a href="#空白区域线条显示" class="headerlink" title="空白区域线条显示"></a>空白区域线条显示</h2><p>当LineVisible属性设置为true时，LabelControl在其空白空间中显示一行。</p>
+<p>影响线条显示的属性包括：</p>
+<ol>
+<li>LineOrientation：控制线条显示方向</li>
+</ol>
+<p><img src="http://image.5243.fun/devexpress/label-control-11.png" alt="Line"><br><img src="http://image.5243.fun/devexpress/label-control-12.png" alt="Line"></p>
+<ol>
+<li>LineLocation：控制线条显示位置</li>
+</ol>
+<p><img src="http://image.5243.fun/devexpress/label-control-13.png" alt="Line"><br><img src="http://image.5243.fun/devexpress/label-control-14.png" alt="Line"></p>
+<ol>
+<li>LineColor：控制线条显示颜色</li>
+</ol>
+<p><img src="http://image.5243.fun/devexpress/label-control-15.png" alt="Line"><br><img src="http://image.5243.fun/devexpress/label-control-16.png" alt="Line"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/devexpress-控件/" rel="tag"># devexpress,控件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/python-selenium-webdriver/" rel="next" title="python爬虫:使用Selenium模拟浏览器行为">
+                <i class="fa fa-chevron-left"></i> python爬虫:使用Selenium模拟浏览器行为
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/02/XtraEditors-SimpleButton/" rel="prev" title="devepress控件不完全指南——SimpleButton">
+                devepress控件不完全指南——SimpleButton <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML格式文本支持"><span class="nav-number">1.</span> <span class="nav-text">HTML格式文本支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片支持"><span class="nav-number">2.</span> <span class="nav-text">图片支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控件大小控制机制"><span class="nav-number">3.</span> <span class="nav-text">控件大小控制机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空白区域线条显示"><span class="nav-number">4.</span> <span class="nav-text">空白区域线条显示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

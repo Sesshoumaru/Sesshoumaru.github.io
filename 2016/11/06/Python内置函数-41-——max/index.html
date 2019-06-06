@@ -1,0 +1,759 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python内置函数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="英文文档max(iterable, *[, key, default]) max(arg1, arg2, *args[, key]) Return the largest item in an iterable or the largest of two or more arguments. If one positional argument is provided, it should be">
+<meta name="keywords" content="python内置函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python内置函数(41)——max">
+<meta property="og:url" content="http://www.laobi.space/2016/11/06/Python内置函数-41-——max/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="英文文档max(iterable, *[, key, default]) max(arg1, arg2, *args[, key]) Return the largest item in an iterable or the largest of two or more arguments. If one positional argument is provided, it should be">
+<meta property="og:updated_time" content="2019-05-23T21:53:46.326Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python内置函数(41)——max">
+<meta name="twitter:description" content="英文文档max(iterable, *[, key, default]) max(arg1, arg2, *args[, key]) Return the largest item in an iterable or the largest of two or more arguments. If one positional argument is provided, it should be">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2016/11/06/Python内置函数-41-——max/"/>
+
+
+
+
+
+  <title>Python内置函数(41)——max | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2016/11/06/Python内置函数-41-——max/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python内置函数(41)——max</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-06T16:09:19+08:00">
+                2016-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python内置函数详解/" itemprop="url" rel="index">
+                    <span itemprop="name">python内置函数详解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="英文文档"><a href="#英文文档" class="headerlink" title="英文文档"></a>英文文档</h3><p>max(iterable, *[, key, default])</p>
+<p>max(arg1, arg2, *args[, key])</p>
+<p>Return the largest item in an iterable or the largest of two or more arguments.</p>
+<p>If one positional argument is provided, it should be an iterable. The largest item in the iterable is returned. If two or more positional arguments are provided, the largest of the positional arguments is returned.</p>
+<p>There are two optional keyword-only arguments. The key argument specifies a one-argument ordering function like that used for list.sort(). The default argument specifies an object to return if the provided iterable is empty. If the iterable is empty and default is not provided, a ValueError is raised.</p>
+<p>If multiple items are maximal, the function returns the first one encountered. This is consistent with other sort-stability preserving tools such as sorted(iterable, key=keyfunc, reverse=True)[0] and heapq.nlargest(1, iterable, key=keyfunc).</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><blockquote>
+<p>函数功能为取传入的多个参数中的最大值，或者传入的可迭代对象元素中的最大值。默认数值型参数，取值大者；字符型参数，取字母表排序靠后者。还可以传入命名参数key，其为一个函数，用来指定取最大值的方法。default命名参数用来指定最大值不存在时返回的默认值。</p>
+</blockquote>
+<h4 id="函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。"><a href="#函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。" class="headerlink" title="函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。"></a>函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>) <span class="comment"># 传入1个参数报错</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#0&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max(<span class="number">1</span>)</div><div class="line">TypeError: <span class="string">'int'</span> object <span class="keyword">is</span> <span class="keyword">not</span> iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 传入2个参数 取2个中较大者</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="comment"># 传入3个参数 取3个中较大者</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="string">'1234'</span>) <span class="comment"># 传入1个可迭代对象，取其最大元素值</span></div><div class="line"><span class="string">'4'</span></div></pre></td></tr></table></figure>
+<h4 id="当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。"><a href="#当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。" class="headerlink" title="当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。"></a>当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">1.1</span>,<span class="number">1.3E1</span>) <span class="comment"># 整数与浮点数可取最大值</span></div><div class="line"><span class="number">13.0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">'3'</span>) <span class="comment"># 数值与字符串不能取最大值</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#5&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">'3'</span>)</div><div class="line">TypeError: unorderable types: str() &gt; int()</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max([<span class="number">1</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">3</span>]) <span class="comment"># 列表与列表可取最大值</span></div><div class="line">[<span class="number">1</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max([<span class="number">1</span>,<span class="number">2</span>],(<span class="number">1</span>,<span class="number">3</span>)) <span class="comment"># 列表与元组不能取最大值</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#7&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max([<span class="number">1</span>,<span class="number">2</span>],(<span class="number">1</span>,<span class="number">3</span>))</div><div class="line">TypeError: unorderable types: tuple() &gt; list()</div></pre></td></tr></table></figure>
+<h4 id="当存在多个相同的最大值时，返回的是最先出现的那个最大值。"><a href="#当存在多个相同的最大值时，返回的是最先出现的那个最大值。" class="headerlink" title="当存在多个相同的最大值时，返回的是最先出现的那个最大值。"></a>当存在多个相同的最大值时，返回的是最先出现的那个最大值。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义a、b、c 3个列表</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">1</span>,<span class="number">1</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment">#查看a、b、c 的id</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</div><div class="line"><span class="number">68128320</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</div><div class="line"><span class="number">68128680</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</div><div class="line"><span class="number">68128240</span></div><div class="line"></div><div class="line"><span class="comment">#取最大值</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d = max(a,b,c)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(d)</div><div class="line"><span class="number">68128320</span></div><div class="line"></div><div class="line"><span class="comment">#验证是否最大值是否是a</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(a) == id(d)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+<h4 id="默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。"><a href="#默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。" class="headerlink" title="默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。"></a>默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>) <span class="comment"># 取数值大者</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="string">'a'</span>,<span class="string">'b'</span>) <span class="comment"># 取排序靠后者</span></div><div class="line"><span class="string">'b'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="string">'ab'</span>,<span class="string">'ac'</span>,<span class="string">'ad'</span>) <span class="comment"># 依次按索引比较取较大者</span></div><div class="line"><span class="string">'ad'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">-1</span>,<span class="number">0</span>) <span class="comment"># 数值默认去数值较大者</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">-1</span>,<span class="number">0</span>,key = abs) <span class="comment"># 传入了求绝对值函数，则参数都会进行求绝对值后再取较大者</span></div><div class="line"><span class="number">-1</span></div></pre></td></tr></table></figure>
+<h4 id="key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。"><a href="#key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。" class="headerlink" title="key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。"></a>key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>,<span class="string">'3'</span>) <span class="comment">#数值和字符串不能取最大值</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#21&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max(<span class="number">1</span>,<span class="number">2</span>,<span class="string">'3'</span>)</div><div class="line">TypeError: unorderable types: str() &gt; int() </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(<span class="number">1</span>,<span class="number">2</span>,<span class="string">'3'</span>,key = int) <span class="comment"># 指定key为转换函数后，可以取最大值</span></div><div class="line"><span class="string">'3'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max((<span class="number">1</span>,<span class="number">2</span>),[<span class="number">1</span>,<span class="number">1</span>]) <span class="comment">#元组和列表不能取最大值</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#24&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max((<span class="number">1</span>,<span class="number">2</span>),[<span class="number">1</span>,<span class="number">1</span>])</div><div class="line">TypeError: unorderable types: list() &gt; tuple()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max((<span class="number">1</span>,<span class="number">2</span>),[<span class="number">1</span>,<span class="number">1</span>],key = <span class="keyword">lambda</span> x : x[<span class="number">1</span>]) <span class="comment">#指定key为返回序列索引1位置的元素后，可以取最大值</span></div><div class="line">(<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h4 id="当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。"><a href="#当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。" class="headerlink" title="当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。"></a>当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>max(()) <span class="comment">#空可迭代对象不能取最大值</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#26&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max(())</div><div class="line">ValueError: max() arg <span class="keyword">is</span> an empty sequence</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max((),default=<span class="number">0</span>) <span class="comment">#空可迭代对象，指定default参数为默认值</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>max((),<span class="number">0</span>) <span class="comment">#默认值必须使用命名参数进行传参，否则将被认为是一个比较的元素</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#27&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    max((),<span class="number">0</span>)</div><div class="line">TypeError: unorderable types: int() &gt; tuple()</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python内置函数/" rel="tag"># python内置函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/05/Python内置函数-40-——map/" rel="next" title="Python内置函数(40)——map">
+                <i class="fa fa-chevron-left"></i> Python内置函数(40)——map
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/06/Python内置函数-42-——memoryview/" rel="prev" title="Python内置函数(42)——memoryview">
+                Python内置函数(42)——memoryview <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#英文文档"><span class="nav-number">1.</span> <span class="nav-text">英文文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。"><span class="nav-number">2.1.</span> <span class="nav-text">函数至少传入两个参数，但是有只传入一个参数的例外，此时参数必须为可迭代对象，返回的是可迭代对象中的最大元素。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。"><span class="nav-number">2.2.</span> <span class="nav-text">当传入参数为数据类型不一致时，传入的所有参数将进行隐式数据类型转换后再比较，如果不能进行隐式数据类型转换，则会报错。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当存在多个相同的最大值时，返回的是最先出现的那个最大值。"><span class="nav-number">2.3.</span> <span class="nav-text">当存在多个相同的最大值时，返回的是最先出现的那个最大值。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。"><span class="nav-number">2.4.</span> <span class="nav-text">默认数值型参数，取值大者；字符型参数，取字母表排序靠后者；序列型参数，则依次按索引位置的值进行比较取最大者。还可以通过传入命名参数key，指定取最大值方法。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。"><span class="nav-number">2.5.</span> <span class="nav-text">key参数的另外一个作用是，不同类型对象本来不能比较取最大值的，传入适当的key函数，变得可以比较能取最大值了。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。"><span class="nav-number">2.6.</span> <span class="nav-text">当只传入的一个可迭代对象时，而且可迭代对象为空，则必须指定命名参数default，用来指定最大值不存在时，函数返回的默认值。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

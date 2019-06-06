@@ -1,0 +1,984 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript 具有丰富多样的运算符，包括算术运算符、逻辑运算符、按位运算符、赋值运算符以及一些其他运算符。 算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)加法 result = expression1 + expression2;将一个数值表达式的值与另一个数值表达式的值相加，或连接两个字符串。  两个表达式都是字符串,则将2个字符串连接成1个字符串 12">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript运算符">
+<meta property="og:url" content="http://www.laobi.space/2015/12/21/JavaScript运算符/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="JavaScript 具有丰富多样的运算符，包括算术运算符、逻辑运算符、按位运算符、赋值运算符以及一些其他运算符。 算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)加法 result = expression1 + expression2;将一个数值表达式的值与另一个数值表达式的值相加，或连接两个字符串。  两个表达式都是字符串,则将2个字符串连接成1个字符串 12">
+<meta property="og:updated_time" content="2019-05-23T21:53:46.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript运算符">
+<meta name="twitter:description" content="JavaScript 具有丰富多样的运算符，包括算术运算符、逻辑运算符、按位运算符、赋值运算符以及一些其他运算符。 算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)加法 result = expression1 + expression2;将一个数值表达式的值与另一个数值表达式的值相加，或连接两个字符串。  两个表达式都是字符串,则将2个字符串连接成1个字符串 12">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2015/12/21/JavaScript运算符/"/>
+
+
+
+
+
+  <title>JavaScript运算符 | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2015/12/21/JavaScript运算符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript运算符</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-21T16:47:51+08:00">
+                2015-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript语法/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> JavaScript 具有丰富多样的运算符，包括算术运算符、逻辑运算符、按位运算符、赋值运算符以及一些其他运算符。</p>
+<h3 id="算术运算符-加法-、减法-、乘法-、除法-、取模-、自增-、自减–、取反"><a href="#算术运算符-加法-、减法-、乘法-、除法-、取模-、自增-、自减–、取反" class="headerlink" title="算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)"></a>算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)</h3><h4 id="加法-result-expression1-expression2"><a href="#加法-result-expression1-expression2" class="headerlink" title="加法 result = expression1 + expression2;"></a>加法 result = expression1 + expression2;</h4><p>将一个数值表达式的值与另一个数值表达式的值相加，或连接两个字符串。</p>
+<ul>
+<li><p>两个表达式都是字符串,则将2个字符串连接成1个字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'a'</span>+<span class="string">'b'</span></div><div class="line"><span class="string">"ab"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>其中一个表达式为字符串，而另一个表达式为非字符串,将非字符串表达式转换成字符串后再与另外一个字符串连接成结果字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">'a'</span> + <span class="number">1</span></div><div class="line"><span class="string">"a1"</span></div><div class="line"><span class="string">'a'</span> + <span class="literal">true</span></div><div class="line"><span class="string">"atrue"</span></div><div class="line"><span class="string">'a'</span> + <span class="literal">null</span></div><div class="line"><span class="string">"anull"</span></div><div class="line"><span class="string">'a'</span> + <span class="literal">undefined</span></div><div class="line"><span class="string">"aundefined"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>两个表达式都为非字符串,则按数学加法相加(<code>true</code>转换成1,<code>false</code>转换成0,<code>null</code>转换成0,<code>undefined</code>转换成<code>NaN</code>)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>+<span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">1</span>+<span class="literal">true</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">1</span>-<span class="literal">false</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="literal">null</span> + <span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="literal">null</span> + <span class="literal">undefined</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h4 id="减法-result-number1-number2"><a href="#减法-result-number1-number2" class="headerlink" title="减法 result = number1 - number2;"></a>减法 result = number1 - number2;</h4><ul>
+<li><p>两个表达式都是数字,则将2个数字按数学减法相减</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span><span class="number">-1</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果表达式不是数字,则先将表达式转换成数字后再按数学减法相减</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="string">'2'</span><span class="number">-1</span> <span class="comment">//'2'转换成2，相当于2-1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="string">'2'</span>-<span class="string">'1'</span><span class="comment">//'2'转换成2,'1'转换成1，相当于2-1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="literal">true</span>-<span class="literal">false</span><span class="comment">//true转换成1,false转换成0，相当于1-0</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="literal">null</span><span class="number">-1</span><span class="comment">//null转换成0，相当于0-1</span></div><div class="line"><span class="number">-1</span></div><div class="line"><span class="literal">undefined</span> - <span class="number">1</span><span class="comment">//undefined转换成NaN，相当于NaN-1</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="乘法-result-number1-number2"><a href="#乘法-result-number1-number2" class="headerlink" title="乘法 result = number1*number2"></a>乘法 result = number1*number2</h4><ul>
+<li><p>如果表达式都是数字,则按数学乘法相乘</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span>*<span class="number">3</span></div><div class="line"><span class="number">6</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果表达式不是数字,则先将表达式转换成数字后再数学乘法相乘</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="string">'2'</span>*<span class="string">'3'</span> <span class="comment">//'2'转换成2,'3'转换成3，相当于2*3</span></div><div class="line"><span class="number">6</span></div><div class="line"><span class="number">2</span>*<span class="string">'a'</span><span class="comment">//'a'转换成NaN，相当于2*NaN</span></div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">2</span>*<span class="literal">true</span><span class="comment">//true转换成1，相当于2*1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">2</span>*<span class="literal">null</span><span class="comment">//null转换成0，相当于2*0</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">2</span>*<span class="literal">undefined</span><span class="comment">//undefined转换成NaN，相当于2*NaN</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="除法-result-number1-number2"><a href="#除法-result-number1-number2" class="headerlink" title="除法 result = number1 / number2"></a>除法 result = number1 / number2</h4><ul>
+<li><p>如果表达式都是数字,则按数学除法相除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span>/<span class="number">3</span></div><div class="line"><span class="number">0.6666666666666666</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果表达式不是数字,则先将表达式转换成数字后再数学除法相除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'2'</span>/<span class="string">'3'</span> <span class="comment">//'2'转换成2,'3'转换成3，相当于2/3</span></div><div class="line"><span class="number">0.6666666666666666</span></div><div class="line"><span class="number">2</span>/<span class="string">'a'</span><span class="comment">//'a'转换成NaN，相当于2/NaN</span></div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">2</span>/<span class="literal">true</span><span class="comment">//true转换成1，相当于2/1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">2</span>/<span class="literal">false</span><span class="comment">//false转换成0，相当于2/0</span></div><div class="line"><span class="literal">Infinity</span></div><div class="line"><span class="number">2</span>/<span class="literal">null</span><span class="comment">//null转换成0，相当于2/0</span></div><div class="line"><span class="literal">Infinity</span></div><div class="line"><span class="number">2</span>/<span class="literal">undefined</span><span class="comment">//undefined转换成NaN，相当于2/NaN</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="取模-result-number1-number2"><a href="#取模-result-number1-number2" class="headerlink" title="取模 result = number1 % number2"></a>取模 result = number1 % number2</h4><ul>
+<li><p>如果表达式都是数字,则按数学除法取模</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">7</span>%<span class="number">3</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果表达式不是数字,则先将表达式转换成数字后再数学除法取模</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'7'</span>%<span class="string">'3'</span> <span class="comment">//'7'转换成2,'3'转换成3，相当于7%3</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">7</span>%<span class="string">'a'</span><span class="comment">//'a'转换成NaN，相当于7%NaN</span></div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">7</span>%<span class="literal">true</span><span class="comment">//true转换成1，相当于7%1</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">7</span>%<span class="literal">false</span><span class="comment">//false转换成0，相当于7%0</span></div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">7</span>%<span class="literal">null</span><span class="comment">//null转换成0，相当于7%0</span></div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">7</span>%<span class="literal">undefined</span><span class="comment">//undefined转换成NaN，相当于7%NaN</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="自增-result-variable-或者-result-variable"><a href="#自增-result-variable-或者-result-variable" class="headerlink" title="自增 result = ++variable 或者 result = variable++"></a>自增 result = ++variable 或者 result = variable++</h4><p>运算符将某个变量的值加一；</p>
+<p>如果运算符在变量的前面出现，则在计算表达式之前修改该值。 如果运算符在变量的后面出现，则在计算表达式之后修改该值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> sum1 = sum++;</div><div class="line"><span class="keyword">var</span> sum2 = ++sum;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sum,sum1,sum2)</div><div class="line"><span class="number">7</span> <span class="number">5</span> <span class="number">7</span></div></pre></td></tr></table></figure></p>
+<h4 id="自减-result-–variable-或者-result-variable–"><a href="#自减-result-–variable-或者-result-variable–" class="headerlink" title="自减 result = –variable 或者 result = variable–"></a>自减 result = –variable 或者 result = variable–</h4><p>减量运算符将某个变量的值减一;</p>
+<p>如果运算符在变量的前面出现，则在计算表达式之前修改该值。 如果运算符在变量的后面出现，则在计算表达式之后修改该值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> sum1 = sum--;</div><div class="line"><span class="keyword">var</span> sum2 = --sum;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sum,sum1,sum2)</div><div class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">3</span></div></pre></td></tr></table></figure></p>
+<h4 id="取反-result-number"><a href="#取反-result-number" class="headerlink" title="取反 result = -number"></a>取反 result = -number</h4><ul>
+<li><p>如果表达式都是数字,则取其相反数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">-1</span>;</div><div class="line">-a</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果表达式不是数字,则先将表达式转换成数字后再取其相反数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-<span class="string">'2'</span> <span class="comment">//'2'转换成2，相当于-2</span></div><div class="line"><span class="number">-2</span></div><div class="line">-<span class="string">'a'</span><span class="comment">//'a'转换成NaN，相当于-NaN</span></div><div class="line"><span class="number">1</span></div><div class="line">-<span class="literal">true</span><span class="comment">//true转换成1，相当于-1</span></div><div class="line"><span class="number">1</span></div><div class="line">-<span class="literal">null</span><span class="comment">//null转换成0，相当于-0</span></div><div class="line"><span class="number">-0</span></div><div class="line">-<span class="literal">undefined</span><span class="comment">//undefined转换成NaN，相当于-NaN</span></div><div class="line"><span class="literal">NaN</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="逻辑运算符-大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-、等于-、不等-、严格相等-、严格不相等-、逻辑与、逻辑或、逻辑非、逗号-、三元条件"><a href="#逻辑运算符-大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-、等于-、不等-、严格相等-、严格不相等-、逻辑与、逻辑或、逻辑非、逗号-、三元条件" class="headerlink" title="逻辑运算符(大于&gt;、小于&lt;、大于等于&gt;=、小于等于&lt;=、等于==、不等!=、严格相等===、严格不相等!==、逻辑与、逻辑或、逻辑非、逗号,、三元条件?)"></a>逻辑运算符(大于&gt;、小于&lt;、大于等于&gt;=、小于等于&lt;=、等于==、不等!=、严格相等===、严格不相等!==、逻辑与、逻辑或、逻辑非、逗号,、三元条件?)</h3><h4 id="大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-expression1-comparisonoperator-expression2"><a href="#大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-expression1-comparisonoperator-expression2" class="headerlink" title="大于&gt;、小于&lt;、大于等于&gt;=、小于等于&lt;= expression1 comparisonoperator expression2"></a>大于&gt;、小于&lt;、大于等于&gt;=、小于等于&lt;= expression1 comparisonoperator expression2</h4><p>comparisonoperator指关系运算符：&lt;、&gt;、&lt;=、&gt;=。<br>运算逻辑如下：</p>
+<ul>
+<li>尝试将两个表达式转换为数字</li>
+<li>如果两个表达式均为字符串，则进行字符串(Unicode 字符值)比较</li>
+<li>如果任一表达式为 NaN，则返回 false</li>
+<li>负零等于正零</li>
+<li>负无穷小于任何数</li>
+<li>正无穷大于任何数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="string">'3'</span>&gt;<span class="number">2</span> <span class="comment">//'3'转换成3,相当于3&gt;2</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="string">'3'</span>&gt;<span class="string">'12'</span></div><div class="line"><span class="literal">true</span> <span class="comment">//2个都是字符串，执行字符串比较</span></div><div class="line"><span class="number">1</span>&gt;<span class="literal">NaN</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">NaN</span>&gt;=<span class="literal">NaN</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="number">-0</span> &gt;= <span class="number">0</span></div><div class="line"><span class="literal">true</span></div><div class="line">-<span class="literal">Infinity</span> &lt; <span class="number">-9999999999999999999</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">Infinity</span> . <span class="number">9999999999999999999</span></div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure>
+<h4 id="等于-、不等-expression1-comparisonoperator-expression2"><a href="#等于-、不等-expression1-comparisonoperator-expression2" class="headerlink" title="等于==、不等!= expression1 comparisonoperator expression2"></a>等于==、不等!= expression1 comparisonoperator expression2</h4><p>comparisonoperator指关系运算符：==、!=。<br>运算逻辑如下：</p>
+<ul>
+<li>如果两个表达式的类型不同，则尝试将它们转换为字符串、数字或布尔值。</li>
+<li>NaN 与包括其自身在内的任何值都不相等。</li>
+<li>负零等于正零。</li>
+<li>null 与 null 和 undefined 相等。</li>
+<li>以下情况被认为是相等的：相同的字符串，数值上相等的数字，同一对象，相同的布尔值，或者当类型不同时可以被强制转换为上述情况之一的值。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'1'</span> == <span class="number">1</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="number">1</span> == <span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">null</span> == <span class="literal">true</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">null</span> == <span class="literal">false</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">null</span> == <span class="literal">null</span></div><div class="line"><span class="literal">true</span> </div><div class="line"><span class="literal">null</span> == <span class="literal">undefined</span></div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure>
+<h4 id="恒等于-、非恒等-expression1-comparisonoperator-expression2-comparisonoperator指-、"><a href="#恒等于-、非恒等-expression1-comparisonoperator-expression2-comparisonoperator指-、" class="headerlink" title="恒等于===、非恒等!== expression1 comparisonoperator expression2 comparisonoperator指===、!=="></a>恒等于===、非恒等!== expression1 comparisonoperator expression2 comparisonoperator指===、!==</h4><p>这些运算符的行为与相等运算符的行为相同，只不过不会执行类型转换。  如果两个表达式的类型不相同，则这些表达式始终返回 false。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">'1'</span> === <span class="number">1</span> <span class="comment">//不执行类型转换</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="number">1</span> === <span class="literal">true</span> <span class="comment">//不执行类型转换</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">null</span> === <span class="literal">null</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">null</span> === <span class="literal">undefined</span> </div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<h4 id="逻辑与-amp-amp-result-expression1-amp-amp-expression2-、逻辑或-result-expression1-expression2-、逻辑非-result-expression1"><a href="#逻辑与-amp-amp-result-expression1-amp-amp-expression2-、逻辑或-result-expression1-expression2-、逻辑非-result-expression1" class="headerlink" title="逻辑与&amp;&amp;(result = expression1 &amp;&amp; expression2 )、逻辑或||(result = expression1 || expression2) 、逻辑非!(result = !expression1)"></a>逻辑与&amp;&amp;(result = expression1 &amp;&amp; expression2 )、逻辑或||(result = expression1 || expression2) 、逻辑非!(result = !expression1)</h4><p>结果由2个表达式的逻辑值决定</p>
+<table>
+<thead>
+<tr>
+<th><code>expression1</code></th>
+<th><code>expression1</code></th>
+<th><code>&amp;&amp;</code>结果</th>
+<th>`</th>
+<th></th>
+<th>`结果</th>
+<th><code>!</code>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>JavaScript 使用下列规则将非布尔值转换为布尔值：</p>
+<ul>
+<li>所有对象都被视为 true。</li>
+<li>如果字符串为空，则它们会被视为 false。</li>
+<li>null 和 undefined 被视为 false。</li>
+<li>如果数字为零，则它为 false。</li>
+</ul>
+<h4 id="逗号运算符-expression1-expression2"><a href="#逗号运算符-expression1-expression2" class="headerlink" title="逗号运算符, expression1, expression2"></a>逗号运算符, expression1, expression2</h4><p>, 运算符会导致按从左到右的顺序执行表达式。 , 运算符的常见用法是在 for 循环的增量表达式中使用。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++, j++)</div><div class="line">&#123;</div><div class="line">   <span class="built_in">console</span>.log(i,j);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">0</span> <span class="number">0</span></div><div class="line"><span class="number">1</span> <span class="number">1</span></div><div class="line"><span class="number">2</span> <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>for 语句只允许在每次通过循环的结尾时执行单个表达式。 , 运算符允许将多个表达式视为单个表达式，因此这两个变量都可以递增。</p>
+<h4 id="三元条件-test-expression1-expression2"><a href="#三元条件-test-expression1-expression2" class="headerlink" title="三元条件? test ? expression1 : expression2"></a>三元条件? test ? expression1 : expression2</h4><p>当test表达式逻辑值为<code>true</code>,则结果是expression1,否则结果是expression2.一般用做if…else 语句的快捷方式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">61</span>;</div><div class="line"><span class="keyword">var</span> result = <span class="string">"failure"</span>;</div><div class="line"><span class="keyword">if</span>(score &gt;= <span class="number">60</span>)</div><div class="line">    result = <span class="string">"pass"</span></div><div class="line"><span class="keyword">else</span></div><div class="line">    result = <span class="string">"failure"</span></div><div class="line"></div><div class="line"><span class="comment">//用?简洁很多</span></div><div class="line"><span class="keyword">var</span> score = <span class="number">61</span>;</div><div class="line"><span class="keyword">var</span> result = score &gt;= <span class="number">60</span> ? <span class="string">"pass"</span> : <span class="string">"failure"</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="位运算符-按位与-amp-、按位或-、按位非-、按位异或-、按位左移-lt-lt-、按位右移-gt-gt-、无符号右移"><a href="#位运算符-按位与-amp-、按位或-、按位非-、按位异或-、按位左移-lt-lt-、按位右移-gt-gt-、无符号右移" class="headerlink" title="位运算符(按位与&amp;、按位或|、按位非~、按位异或^、按位左移&lt;&lt;、按位右移&gt;&gt;、无符号右移)"></a>位运算符(按位与&amp;、按位或|、按位非~、按位异或^、按位左移&lt;&lt;、按位右移&gt;&gt;、无符号右移)</h3><h4 id="按位与-amp-对两个-32-位表达式的每一个位执行按位“与”运算。-如果两个位均为-1，则结果是-1。-否则，结果为-0。"><a href="#按位与-amp-对两个-32-位表达式的每一个位执行按位“与”运算。-如果两个位均为-1，则结果是-1。-否则，结果为-0。" class="headerlink" title="按位与&amp; 对两个 32 位表达式的每一个位执行按位“与”运算。 如果两个位均为 1，则结果是 1。 否则，结果为 0。"></a>按位与&amp; 对两个 32 位表达式的每一个位执行按位“与”运算。 如果两个位均为 1，则结果是 1。 否则，结果为 0。</h4><table>
+<thead>
+<tr>
+<th><code>Bit1</code></th>
+<th><code>Bit2</code></th>
+<th>按位<code>&amp;</code>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> expr1 = <span class="number">9</span>;<span class="comment">// 9 is 00000000000000000000000000001001</span></div><div class="line"><span class="keyword">var</span> expr2 = <span class="number">5</span>;<span class="comment">// 5 is 00000000000000000000000000000101</span></div><div class="line">expr1 &amp; expr2;<span class="comment">// 1 is 00000000000000000000000000000001</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<h4 id="运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为-1，则结果中的该位即为-1。否则，结果中的该位将为-0。"><a href="#运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为-1，则结果中的该位即为-1。否则，结果中的该位将为-0。" class="headerlink" title="|运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为 1，则结果中的该位即为 1。否则，结果中的该位将为 0。"></a>|运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为 1，则结果中的该位即为 1。否则，结果中的该位将为 0。</h4><table>
+<thead>
+<tr>
+<th><code>Bit1</code></th>
+<th><code>Bit2</code></th>
+<th>按位`</th>
+<th>`结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> expr1 = <span class="number">9</span>;<span class="comment">// 9 is 1001</span></div><div class="line"><span class="keyword">var</span> expr2 = <span class="number">5</span>;<span class="comment">// 5 is 0101</span></div><div class="line">expr1 | expr2;<span class="comment">//13 is 1101</span></div><div class="line"><span class="number">13</span></div></pre></td></tr></table></figure>
+<h4 id="运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为-1，则结果中的该位变为-0。表达式中的任何一位为-0，则结果中的该位变为-1。"><a href="#运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为-1，则结果中的该位变为-0。表达式中的任何一位为-0，则结果中的该位变为-1。" class="headerlink" title="~ 运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为 1，则结果中的该位变为 0。表达式中的任何一位为 0，则结果中的该位变为 1。"></a>~ 运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为 1，则结果中的该位变为 0。表达式中的任何一位为 0，则结果中的该位变为 1。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~<span class="number">5</span>;<span class="comment">//  5 is 00000000 00000000 00000000 00000101</span></div><div class="line"><span class="number">-6</span> <span class="comment">// -6 is 11111111 11111111 11111111 11111010</span></div></pre></td></tr></table></figure>
+<h4 id="运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为-1-时，结果中的该位才为-1。否则，结果中的该位为-0。"><a href="#运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为-1-时，结果中的该位才为-1。否则，结果中的该位为-0。" class="headerlink" title="^ 运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为 1 时，结果中的该位才为 1。否则，结果中的该位为 0。"></a>^ 运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为 1 时，结果中的该位才为 1。否则，结果中的该位为 0。</h4><table>
+<thead>
+<tr>
+<th><code>Bit1</code></th>
+<th><code>Bit2</code></th>
+<th>按位<code>^</code>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> expr1 = <span class="number">9</span>;<span class="comment">// 9 is 1001</span></div><div class="line"><span class="keyword">var</span> expr2 = <span class="number">5</span>;<span class="comment">// 5 is 0101</span></div><div class="line">expr1 ^ expr2;<span class="comment">//12 is 1100</span></div><div class="line"><span class="number">12</span></div></pre></td></tr></table></figure>
+<h4 id="lt-lt-运算符将-表达式1-的位左移-表达式2-中指定的位数。"><a href="#lt-lt-运算符将-表达式1-的位左移-表达式2-中指定的位数。" class="headerlink" title="&lt;&lt; 运算符将 表达式1 的位左移 表达式2 中指定的位数。"></a>&lt;&lt; 运算符将 表达式1 的位左移 表达式2 中指定的位数。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">14</span>      <span class="comment">//14 is 00001110</span></div><div class="line"><span class="number">14</span></div><div class="line"><span class="number">14</span> &lt;&lt; <span class="number">2</span> <span class="comment">//56 is 00111000</span></div><div class="line"><span class="number">56</span></div></pre></td></tr></table></figure>
+<h4 id="运算符将-表达式1-的位右移-表达式2-中指定的位数。用-表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。"><a href="#运算符将-表达式1-的位右移-表达式2-中指定的位数。用-表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。" class="headerlink" title=">> 运算符将 表达式1 的位右移 表达式2 中指定的位数。用 表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。"></a>>> 运算符将 表达式1 的位右移 表达式2 中指定的位数。用 表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">-14</span>      <span class="comment">//-14 is 11110010</span></div><div class="line"><span class="number">-14</span></div><div class="line"><span class="number">-14</span> &gt;&gt; <span class="number">2</span> <span class="comment">// -4 is 11111100</span></div><div class="line"><span class="number">-4</span></div></pre></td></tr></table></figure>
+<h4 id="gt-gt-gt-运算符将-表达式1-的位右移-表达式2-中指定的位数。-用零填充右移后左边空出的位。-右移的位被丢弃。"><a href="#gt-gt-gt-运算符将-表达式1-的位右移-表达式2-中指定的位数。-用零填充右移后左边空出的位。-右移的位被丢弃。" class="headerlink" title="&gt;&gt;&gt;运算符将 表达式1 的位右移 表达式2 中指定的位数。  用零填充右移后左边空出的位。 右移的位被丢弃。"></a>&gt;&gt;&gt;运算符将 表达式1 的位右移 表达式2 中指定的位数。  用零填充右移后左边空出的位。 右移的位被丢弃。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">-14</span>      <span class="comment">//        -14 is 11111111 11111111 11111111 11110010</span></div><div class="line"><span class="number">-14</span></div><div class="line"><span class="number">-14</span> &gt;&gt;&gt; <span class="number">2</span> <span class="comment">//1073741820 is 00111111 11111111 11111111 11111100</span></div><div class="line"><span class="number">-4</span></div></pre></td></tr></table></figure>
+<h3 id="赋值运算符-赋值运算符-、复合赋值运算符"><a href="#赋值运算符-赋值运算符-、复合赋值运算符" class="headerlink" title="赋值运算符(赋值运算符=、复合赋值运算符)"></a>赋值运算符(赋值运算符=、复合赋值运算符)</h3><p>赋值预算法，即将表达式的值赋给变量</p>
+<p>加法、减法、乘法、除法、取模、按位与、按位或、按位异或、按位左移、按位右移、无符号右移可以与赋值运算符组成符合运算符，先运算再赋值。</p>
+<h3 id="其他运算符-delete、instanceof、new、typeof、void"><a href="#其他运算符-delete、instanceof、new、typeof、void" class="headerlink" title="其他运算符(delete、instanceof、new、typeof、void)"></a>其他运算符(delete、instanceof、new、typeof、void)</h3><h4 id="delete运算符-从对象中删除一个属性，或从数组中移除一个元素。"><a href="#delete运算符-从对象中删除一个属性，或从数组中移除一个元素。" class="headerlink" title="delete运算符:从对象中删除一个属性，或从数组中移除一个元素。"></a>delete运算符:从对象中删除一个属性，或从数组中移除一个元素。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除对象属性</span></div><div class="line"><span class="keyword">var</span> myObj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">myObj.name = <span class="string">"laobi"</span>;</div><div class="line">myObj.count = <span class="number">42</span>;</div><div class="line"></div><div class="line"><span class="keyword">delete</span> myObj.count</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(myObj.count)</div><div class="line"><span class="literal">undefined</span></div><div class="line"></div><div class="line"><span class="comment">//删除数组元素</span></div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">a;</div><div class="line">(<span class="number">3</span>) [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="keyword">delete</span> a[<span class="number">1</span>]</div><div class="line"><span class="literal">true</span></div><div class="line">a;</div><div class="line">(<span class="number">3</span>) [<span class="number">1</span>, <span class="literal">undefined</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<h4 id="instanceof-运算符-判断一个对象是否为特定类的一个实例。"><a href="#instanceof-运算符-判断一个对象是否为特定类的一个实例。" class="headerlink" title="instanceof 运算符:判断一个对象是否为特定类的一个实例。"></a>instanceof 运算符:判断一个对象是否为特定类的一个实例。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">(<span class="number">3</span>) [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">a <span class="keyword">instanceof</span> <span class="built_in">Array</span>;</div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure>
+<h4 id="new运算符：创建一个新对象。"><a href="#new运算符：创建一个新对象。" class="headerlink" title="new运算符：创建一个新对象。"></a>new运算符：创建一个新对象。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+<h4 id="typeof运算符：查看表达式的数据类型的字符串。"><a href="#typeof运算符：查看表达式的数据类型的字符串。" class="headerlink" title="typeof运算符：查看表达式的数据类型的字符串。"></a>typeof运算符：查看表达式的数据类型的字符串。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>(<span class="number">1</span>)</div><div class="line"><span class="string">"number"</span></div><div class="line"><span class="keyword">typeof</span>(<span class="string">"1"</span>)</div><div class="line"><span class="string">"string"</span></div><div class="line"><span class="keyword">typeof</span>(<span class="literal">true</span>)</div><div class="line"><span class="string">"boolean"</span></div><div class="line"><span class="keyword">typeof</span>(<span class="literal">undefined</span>)</div><div class="line"><span class="string">"undefined"</span></div><div class="line"><span class="keyword">typeof</span>(<span class="literal">null</span>)</div><div class="line"><span class="string">"object"</span></div></pre></td></tr></table></figure>
+<h4 id="void运算符：禁止表达式返回值。"><a href="#void运算符：禁止表达式返回值。" class="headerlink" title="void运算符：禁止表达式返回值。"></a>void运算符：禁止表达式返回值。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> <span class="number">1</span></div><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="keyword">void</span> <span class="string">"1"</span></div><div class="line"><span class="literal">undefined</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/17/JavaScript数据类型-4-——null和undefined/" rel="next" title="JavaScript数据类型(4)——null和undefined">
+                <i class="fa fa-chevron-left"></i> JavaScript数据类型(4)——null和undefined
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/15/Python内置函数-1-——abs/" rel="prev" title="Python内置函数(1)——abs">
+                Python内置函数(1)——abs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符-加法-、减法-、乘法-、除法-、取模-、自增-、自减–、取反"><span class="nav-number">1.</span> <span class="nav-text">算术运算符(加法+、减法-、乘法*、除法/、取模%、自增++、自减–、取反-)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加法-result-expression1-expression2"><span class="nav-number">1.1.</span> <span class="nav-text">加法 result = expression1 + expression2;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减法-result-number1-number2"><span class="nav-number">1.2.</span> <span class="nav-text">减法 result = number1 - number2;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乘法-result-number1-number2"><span class="nav-number">1.3.</span> <span class="nav-text">乘法 result = number1*number2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#除法-result-number1-number2"><span class="nav-number">1.4.</span> <span class="nav-text">除法 result = number1 / number2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取模-result-number1-number2"><span class="nav-number">1.5.</span> <span class="nav-text">取模 result = number1 % number2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自增-result-variable-或者-result-variable"><span class="nav-number">1.6.</span> <span class="nav-text">自增 result = ++variable 或者 result = variable++</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自减-result-–variable-或者-result-variable–"><span class="nav-number">1.7.</span> <span class="nav-text">自减 result = –variable 或者 result = variable–</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反-result-number"><span class="nav-number">1.8.</span> <span class="nav-text">取反 result = -number</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符-大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-、等于-、不等-、严格相等-、严格不相等-、逻辑与、逻辑或、逻辑非、逗号-、三元条件"><span class="nav-number">2.</span> <span class="nav-text">逻辑运算符(大于>、小于<、大于等于>=、小于等于<=、等于==、不等!=、严格相等===、严格不相等!==、逻辑与、逻辑或、逻辑非、逗号,、三元条件?)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大于-gt-、小于-lt-、大于等于-gt-、小于等于-lt-expression1-comparisonoperator-expression2"><span class="nav-number">2.1.</span> <span class="nav-text">大于>、小于<、大于等于>=、小于等于<= expression1 comparisonoperator expression2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等于-、不等-expression1-comparisonoperator-expression2"><span class="nav-number">2.2.</span> <span class="nav-text">等于==、不等!= expression1 comparisonoperator expression2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恒等于-、非恒等-expression1-comparisonoperator-expression2-comparisonoperator指-、"><span class="nav-number">2.3.</span> <span class="nav-text">恒等于===、非恒等!== expression1 comparisonoperator expression2 comparisonoperator指===、!==</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑与-amp-amp-result-expression1-amp-amp-expression2-、逻辑或-result-expression1-expression2-、逻辑非-result-expression1"><span class="nav-number">2.4.</span> <span class="nav-text">逻辑与&&(result = expression1 && expression2 )、逻辑或||(result = expression1 || expression2) 、逻辑非!(result = !expression1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逗号运算符-expression1-expression2"><span class="nav-number">2.5.</span> <span class="nav-text">逗号运算符, expression1, expression2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三元条件-test-expression1-expression2"><span class="nav-number">2.6.</span> <span class="nav-text">三元条件? test ? expression1 : expression2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符-按位与-amp-、按位或-、按位非-、按位异或-、按位左移-lt-lt-、按位右移-gt-gt-、无符号右移"><span class="nav-number">3.</span> <span class="nav-text">位运算符(按位与&、按位或|、按位非~、按位异或^、按位左移<<、按位右移>>、无符号右移)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按位与-amp-对两个-32-位表达式的每一个位执行按位“与”运算。-如果两个位均为-1，则结果是-1。-否则，结果为-0。"><span class="nav-number">3.1.</span> <span class="nav-text">按位与& 对两个 32 位表达式的每一个位执行按位“与”运算。 如果两个位均为 1，则结果是 1。 否则，结果为 0。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为-1，则结果中的该位即为-1。否则，结果中的该位将为-0。"><span class="nav-number">3.2.</span> <span class="nav-text">|运算符查看两个表达式的二进制表示形式的值，并对这些值进行按位“或”运算。只要其中任意一个表达式有一位为 1，则结果中的该位即为 1。否则，结果中的该位将为 0。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为-1，则结果中的该位变为-0。表达式中的任何一位为-0，则结果中的该位变为-1。"><span class="nav-number">3.3.</span> <span class="nav-text">~ 运算符查看表达式的二进制表示形式的值，并执行位非运算。表达式中的任何一位为 1，则结果中的该位变为 0。表达式中的任何一位为 0，则结果中的该位变为 1。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为-1-时，结果中的该位才为-1。否则，结果中的该位为-0。"><span class="nav-number">3.4.</span> <span class="nav-text">^ 运算符随后查看两个表达式的二进制表示形式的值，并执行按位“异或”运算。当且仅当只有一个表达式的某位为 1 时，结果中的该位才为 1。否则，结果中的该位为 0。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-lt-运算符将-表达式1-的位左移-表达式2-中指定的位数。"><span class="nav-number">3.5.</span> <span class="nav-text"><< 运算符将 表达式1 的位左移 表达式2 中指定的位数。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符将-表达式1-的位右移-表达式2-中指定的位数。用-表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。"><span class="nav-number">3.6.</span> <span class="nav-text">>> 运算符将 表达式1 的位右移 表达式2 中指定的位数。用 表达式1的符号位填充右移后左边空出来的位。右移的位被丢弃。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-gt-gt-运算符将-表达式1-的位右移-表达式2-中指定的位数。-用零填充右移后左边空出的位。-右移的位被丢弃。"><span class="nav-number">3.7.</span> <span class="nav-text">>>>运算符将 表达式1 的位右移 表达式2 中指定的位数。  用零填充右移后左边空出的位。 右移的位被丢弃。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符-赋值运算符-、复合赋值运算符"><span class="nav-number">4.</span> <span class="nav-text">赋值运算符(赋值运算符=、复合赋值运算符)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他运算符-delete、instanceof、new、typeof、void"><span class="nav-number">5.</span> <span class="nav-text">其他运算符(delete、instanceof、new、typeof、void)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#delete运算符-从对象中删除一个属性，或从数组中移除一个元素。"><span class="nav-number">5.1.</span> <span class="nav-text">delete运算符:从对象中删除一个属性，或从数组中移除一个元素。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#instanceof-运算符-判断一个对象是否为特定类的一个实例。"><span class="nav-number">5.2.</span> <span class="nav-text">instanceof 运算符:判断一个对象是否为特定类的一个实例。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new运算符：创建一个新对象。"><span class="nav-number">5.3.</span> <span class="nav-text">new运算符：创建一个新对象。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof运算符：查看表达式的数据类型的字符串。"><span class="nav-number">5.4.</span> <span class="nav-text">typeof运算符：查看表达式的数据类型的字符串。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#void运算符：禁止表达式返回值。"><span class="nav-number">5.5.</span> <span class="nav-text">void运算符：禁止表达式返回值。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

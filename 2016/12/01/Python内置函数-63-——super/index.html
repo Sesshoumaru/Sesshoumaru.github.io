@@ -1,0 +1,759 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python内置函数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="英文文档super([type[, object-or-type]]) Return a proxy object that delegates method calls to a parent or sibling class of type. This is useful for accessing inherited methods that have been overridden in">
+<meta name="keywords" content="python内置函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python内置函数(63)——super">
+<meta property="og:url" content="http://www.laobi.space/2016/12/01/Python内置函数-63-——super/index.html">
+<meta property="og:site_name" content="十月狐狸的博客">
+<meta property="og:description" content="英文文档super([type[, object-or-type]]) Return a proxy object that delegates method calls to a parent or sibling class of type. This is useful for accessing inherited methods that have been overridden in">
+<meta property="og:updated_time" content="2019-05-23T21:53:46.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python内置函数(63)——super">
+<meta name="twitter:description" content="英文文档super([type[, object-or-type]]) Return a proxy object that delegates method calls to a parent or sibling class of type. This is useful for accessing inherited methods that have been overridden in">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.laobi.space/2016/12/01/Python内置函数-63-——super/"/>
+
+
+
+
+
+  <title>Python内置函数(63)——super | 十月狐狸的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9aa5b5846c08b54be2d9b4450e15bbbe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十月狐狸的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总要有所坚持...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.laobi.space/2016/12/01/Python内置函数-63-——super/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="十月狐狸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十月狐狸的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python内置函数(63)——super</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T23:44:56+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python内置函数详解/" itemprop="url" rel="index">
+                    <span itemprop="name">python内置函数详解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="英文文档"><a href="#英文文档" class="headerlink" title="英文文档"></a>英文文档</h3><p>super([type[, object-or-type]])</p>
+<p>Return a proxy object that delegates method calls to a parent or sibling class of type. This is useful for accessing inherited methods that have been overridden in a class. The search order is same as that used by getattr() except that the type itself is skipped.</p>
+<p>The <strong>mro</strong> attribute of the type lists the method resolution search order used by both getattr() and super(). The attribute is dynamic and can change whenever the inheritance hierarchy is updated.</p>
+<p>If the second argument is omitted, the super object returned is unbound. If the second argument is an object, isinstance(obj, type) must be true. If the second argument is a type, issubclass(type2, type) must be true (this is useful for classmethods).</p>
+<p>There are two typical use cases for super. In a class hierarchy with single inheritance, super can be used to refer to parent classes without naming them explicitly, thus making the code more maintainable. This use closely parallels the use of super in other programming languages.</p>
+<p>The second use case is to support cooperative multiple inheritance in a dynamic execution environment. This use case is unique to Python and is not found in statically compiled languages or languages that only support single inheritance. This makes it possible to implement “diamond diagrams” where multiple base classes implement the same method. Good design dictates that this method have the same calling signature in every case (because the order of calls is determined at runtime, because that order adapts to changes in the class hierarchy, and because that order can include sibling classes that are unknown prior to runtime).</p>
+<p>Note that super() is implemented as part of the binding process for explicit dotted attribute lookups such as super().<strong>getitem</strong>(name). It does so by implementing its own <strong>getattribute</strong>() method for searching classes in a predictable order that supports cooperative multiple inheritance. Accordingly, super() is undefined for implicit lookups using statements or operators such as super()[name].</p>
+<p>Also note that, aside from the zero argument form, super() is not limited to use inside methods. The two argument form specifies the arguments exactly and makes the appropriate references. The zero argument form only works inside a class definition, as the compiler fills in the necessary details to correctly retrieve the class being defined, as well as accessing the current instance for ordinary methods.</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。"><a href="#super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。" class="headerlink" title="super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。"></a>super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。</h4><h4 id="为什么要有super"><a href="#为什么要有super" class="headerlink" title="为什么要有super?"></a>为什么要有super?</h4><h5 id="最早之前，在子类-B-中调用父类-A-的方法采用的方式如下："><a href="#最早之前，在子类-B-中调用父类-A-的方法采用的方式如下：" class="headerlink" title="最早之前，在子类(B)中调用父类(A)的方法采用的方式如下："></a>最早之前，在子类(B)中调用父类(A)的方法采用的方式如下：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义父类A</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'A.__init__'</span>)</div><div class="line"></div><div class="line"><span class="comment">#实例化A        </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = A() </div><div class="line">A.__init__</div><div class="line"></div><div class="line"><span class="comment"># 定义子类B，继承A，在B的__init__ 方法中调用A的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        A.__init__(self)</div><div class="line"></div><div class="line"> <span class="comment">#实例化B</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A.__init__</div></pre></td></tr></table></figure>
+<h5 id="假设现在要更改新定义一个类-A1-，并更改继承关系-B-gt-A改成B-gt-A1-，则需要所有类中做如下修改："><a href="#假设现在要更改新定义一个类-A1-，并更改继承关系-B-gt-A改成B-gt-A1-，则需要所有类中做如下修改：" class="headerlink" title="假设现在要更改新定义一个类(A1)，并更改继承关系(B-&gt;A改成B-&gt;A1)，则需要所有类中做如下修改："></a>假设现在要更改新定义一个类(A1)，并更改继承关系(B-&gt;A改成B-&gt;A1)，则需要所有类中做如下修改：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义新的父类A1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A1</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'A1.__init__'</span>)</div><div class="line"></div><div class="line"><span class="comment">#更改继承关系B-&gt;A改成B-&gt;A1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        A1.__init__(self)</div><div class="line"></div><div class="line"><span class="comment">#能正确调用新的父类A1的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A1.__init__</div><div class="line"></div><div class="line"><span class="comment">#假设忘了修改A.__init__(self)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        A.__init__(self)</div><div class="line">      </div><div class="line"><span class="comment">#则还是调用了A的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A.__init__</div></pre></td></tr></table></figure>
+<h5 id="引入super之后，不需要显示指定父类的类名，增强了程序的可维护性："><a href="#引入super之后，不需要显示指定父类的类名，增强了程序的可维护性：" class="headerlink" title="引入super之后，不需要显示指定父类的类名，增强了程序的可维护性："></a>引入super之后，不需要显示指定父类的类名，增强了程序的可维护性：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#B-&gt;A 改用super方式调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super().__init__()</div><div class="line"></div><div class="line"><span class="comment">#能正确调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A.__init__</div><div class="line"></div><div class="line"><span class="comment">#更改继承关系B-&gt;A改成B-&gt;A1，调用父类方法方式不用修改</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super().__init__()</div><div class="line"></div><div class="line"><span class="comment">#也能正确调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A1.__init__</div></pre></td></tr></table></figure>
+<h4 id="不带任何参数的super等效于super-类名-self-，此种情况多用于单继承关系的子类中。"><a href="#不带任何参数的super等效于super-类名-self-，此种情况多用于单继承关系的子类中。" class="headerlink" title="不带任何参数的super等效于super(类名,self)，此种情况多用于单继承关系的子类中。"></a>不带任何参数的super等效于super(类名,self)，此种情况多用于单继承关系的子类中。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#super不带参数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super().__init__()</div><div class="line"></div><div class="line"><span class="comment">#能正确调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A1.__init__</div><div class="line"></div><div class="line"><span class="comment">#super带两个参数(类名,self)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super(B,self).__init__()</div><div class="line"></div><div class="line"><span class="comment">#也能正确调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div><div class="line">A1.__init__</div></pre></td></tr></table></figure>
+<h4 id="如果第2个参数不传入，则表示代理对象不绑定继承关系。"><a href="#如果第2个参数不传入，则表示代理对象不绑定继承关系。" class="headerlink" title="如果第2个参数不传入，则表示代理对象不绑定继承关系。"></a>如果第2个参数不传入，则表示代理对象不绑定继承关系。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#super第2个参数不传入，生成代理对象不绑定继承关系</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A1)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super(B).__init__()</div><div class="line"></div><div class="line"><span class="comment">#super(B).__init__()方法执行时不会调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</div><div class="line">B.__init__</div></pre></td></tr></table></figure>
+<h4 id="如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。"><a href="#如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。" class="headerlink" title="如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。"></a>如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义父类A</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'A.__init__'</span>)</div><div class="line"></div><div class="line"><span class="comment">#定义子类B，继承A，__init__中调用父类的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'B.__init__'</span>)</div><div class="line">        super().__init__()</div><div class="line"></div><div class="line"><span class="comment">#定义子类C，继承B，__init__中调用父类的__init__方法        </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'C.__init__'</span>)</div><div class="line">        super().__init__()</div><div class="line"></div><div class="line"><span class="comment">#实例化C时，执行C的__init__方法，调用直接父类B的__init__方法，又进一步调用间接父类A的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c = C()</div><div class="line">C.__init__</div><div class="line">B.__init__</div><div class="line">A.__init__</div><div class="line"></div><div class="line"><span class="comment">#重新定义子类C，继承关系不变，调用父类方法__init__时改用super(B,self)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'C.__init__'</span>)</div><div class="line">        super(B,self).__init__()</div><div class="line"></div><div class="line"><span class="comment">#实例化C时，执行C的__init__方法，super(B,self)代理找到B的父类A，将self转换成B的实例，直接调用了A的__init__方法，跳过了调用B的__init__方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c = C()</div><div class="line">C.__init__</div><div class="line">A.__init__</div><div class="line"></div><div class="line"><span class="comment">#定义一个新类D</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'D.__init__'</span>)</div><div class="line"></div><div class="line"><span class="comment">#重新定义C，继承关系不变，调用父类方法__init__时改用super(D,self)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'C.__init__'</span>)</div><div class="line">        super(D,self).__init__()</div><div class="line"></div><div class="line"><span class="comment">#实例化C时，执行C的__init__方法，super(D,self)代理找到D的父类object，将self转换成D的实例，因为D和C无继承关系，self</span></div><div class="line">无法转换成D的实例所以报错</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c= C()</div><div class="line">C.__init__</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#14&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    c= C()</div><div class="line">  File <span class="string">"&lt;pyshell#13&gt;"</span>, line <span class="number">4</span>, <span class="keyword">in</span> __init__</div><div class="line">    super(D,self).__init__()</div><div class="line">TypeError: super(type, obj): obj must be an instance <span class="keyword">or</span> subtype of type</div></pre></td></tr></table></figure>
+<h4 id="如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。"><a href="#如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。" class="headerlink" title="如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。"></a>如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义父类A，并定义有一个类方法sayHello</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'A.sayHello'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 定义子类B，继承A，重写类方法sayHello，在其中调用父类的sayHello方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'B.sayHello'</span>)</div><div class="line">        super().sayHello()</div><div class="line"></div><div class="line"><span class="comment"># 定义子类C，继承B，重写类方法sayHello，在其中调用父类的sayHello方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'C.sayHello'</span>)</div><div class="line">        super().sayHello()</div><div class="line"></div><div class="line"><span class="comment">#调用C的类方法sayHello，其调用C的直接父类B的类方法sayHello，调用时B的sayHello方法又调用B的直接父类A的类方法sayHello</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>C.sayHello()</div><div class="line">C.sayHello</div><div class="line">B.sayHello</div><div class="line">A.sayHello</div><div class="line"></div><div class="line"><span class="comment">#重新定义类C，继承关系不变，使用super(C,C)的方式调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'C.sayHello'</span>)</div><div class="line">        super(C,C).sayHello()</div><div class="line"></div><div class="line"><span class="comment">#调用C的类方法sayHello，super(C,C)代理对象，找到C的直接父类B，然后调用C的直接父类B的类方法sayHello，调用时B的sayHello方法又调用B的直接父类A的类方法sayHello</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>C.sayHello()</div><div class="line">C.sayHello</div><div class="line">B.sayHello</div><div class="line">A.sayHello</div><div class="line"></div><div class="line"><span class="comment">#重新定义类C，继承关系不变，使用super(B,C)的方式调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'C.sayHello'</span>)</div><div class="line">        super(B,C).sayHello()</div><div class="line"></div><div class="line"><span class="comment">#调用C的类方法sayHello，super(B,C)代理对象，找到B的直接父类A，然后调用B的直接父类A的类方法sayHello，中间不会调用B的sayHello方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>C.sayHello()</div><div class="line">C.sayHello</div><div class="line">A.sayHello</div><div class="line"></div><div class="line"><span class="comment">#定义一个新类D，和A、B、C无继承关系</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'D.sayHello'</span>)</div><div class="line"></div><div class="line"><span class="comment">#重新定义类C，继承关系不变，使用super(D,C)的方式调用父类方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHello</span><span class="params">(cls)</span>:</span></div><div class="line">        print(<span class="string">'C.sayHello'</span>)</div><div class="line">        super(D,C).sayHello()</div><div class="line"></div><div class="line"><span class="comment">#调用C的类方法sayHello，super(D,C)代理对象，找到B的直接父类object，然后将C转换成D类，转换失败调用出错</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>C.sayHello()</div><div class="line">C.sayHello</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#81&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    C.sayHello()</div><div class="line">  File <span class="string">"&lt;pyshell#80&gt;"</span>, line <span class="number">5</span>, <span class="keyword">in</span> sayHello</div><div class="line">    super(D,C).sayHello()</div><div class="line">TypeError: super(type, obj): obj must be an instance <span class="keyword">or</span> subtype of type</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python内置函数/" rel="tag"># python内置函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/17/Python内置函数-62-——sum/" rel="next" title="Python内置函数(62)——sum">
+                <i class="fa fa-chevron-left"></i> Python内置函数(62)——sum
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/03/Python内置函数-64-——tuple/" rel="prev" title="Python内置函数(64)——tuple">
+                Python内置函数(64)——tuple <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/6032253?v=3&amp;s=460"
+               alt="十月狐狸" />
+          <p class="site-author-name" itemprop="name">十月狐狸</p>
+           
+              <p class="site-description motion-element" itemprop="description">兴趣是最好的老师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Sesshoumaru/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/sesshoumaru/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/5a732d8f0467" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#英文文档"><span class="nav-number">1.</span> <span class="nav-text">英文文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。"><span class="nav-number">2.1.</span> <span class="nav-text">super函数返回的是一个代理对象，通过此对象可以调用所在类的父类或者兄弟类的方法，而不显示的指定父类或者兄弟类的类名。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要有super"><span class="nav-number">2.2.</span> <span class="nav-text">为什么要有super?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最早之前，在子类-B-中调用父类-A-的方法采用的方式如下："><span class="nav-number">2.2.1.</span> <span class="nav-text">最早之前，在子类(B)中调用父类(A)的方法采用的方式如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#假设现在要更改新定义一个类-A1-，并更改继承关系-B-gt-A改成B-gt-A1-，则需要所有类中做如下修改："><span class="nav-number">2.2.2.</span> <span class="nav-text">假设现在要更改新定义一个类(A1)，并更改继承关系(B->A改成B->A1)，则需要所有类中做如下修改：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引入super之后，不需要显示指定父类的类名，增强了程序的可维护性："><span class="nav-number">2.2.3.</span> <span class="nav-text">引入super之后，不需要显示指定父类的类名，增强了程序的可维护性：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不带任何参数的super等效于super-类名-self-，此种情况多用于单继承关系的子类中。"><span class="nav-number">2.3.</span> <span class="nav-text">不带任何参数的super等效于super(类名,self)，此种情况多用于单继承关系的子类中。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果第2个参数不传入，则表示代理对象不绑定继承关系。"><span class="nav-number">2.4.</span> <span class="nav-text">如果第2个参数不传入，则表示代理对象不绑定继承关系。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。"><span class="nav-number">2.5.</span> <span class="nav-text">如果第2个参数是一个对象，则对象必须是第1个参数指定类型的实例，此种关系多用于多层继承关系的子类中。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。"><span class="nav-number">2.6.</span> <span class="nav-text">如果第2个参数时一个类型，则类型必须是第1个参数指定类型的子类，此种关系多用于多层继承关系的子类中，适用于类方法。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十月狐狸</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
